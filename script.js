@@ -10,6 +10,7 @@ var button4 = document.createElement("button");
 var startButton = document.createElement("button");
 var controls = document.createElement("div")
 var secondTimerEl = document.createElement ("h3")
+var scoreBoardEl = document.createElement("div")
 
 
 
@@ -50,7 +51,7 @@ var myQuestions = [
       question: 'Inside which HTML element do we put the JavaScript??',
       answers: [
         {text: '<script>', correct: true},
-        {text: '<javascript>', correct: false} ,
+        {text: '<javascript>', correct: false},
         {text: '<js>', correct: false},
         {text: '<scripting>', correct: false},
       ]
@@ -58,17 +59,27 @@ var myQuestions = [
     {
       question: 'Will you work?',
       answers: [
-        {text: '<script>', correct: true},
-        {text: '<javascript>', correct: false}, 
-        {text: '<js>', correct: false},
+        {text: '<scrjkhipt>', correct: true},
+        {text: '<javbnascript>', correct: false}, 
+        {text: '<jns>', correct: false},
+        {text: '<scripting>', correct: false}, 
+      ]
+    },
+    {
+      question: 'Will you work2?',
+      answers: [
+        {text: '1', correct: true},
+        {text: 'correct', correct: false}, 
+        {text: 'wrong', correct: false},
         {text: '<scripting>', correct: false}, 
       ]
     }
     
+    
 ]
   
 
-var secondsLeft = 10;
+var secondsLeft = 20;
 
 startTime.addEventListener("click", setTime )
 startTime.addEventListener("click", startGame)
@@ -102,7 +113,9 @@ function startGame () {
   getNewQuestion()
 };
 
+
 function getNewQuestion(question){
+
   questionCounter ++;
   var questionIndex = Math.floor(Math.random()* availablequestions.length);
   currentQuestion = availablequestions[questionIndex];
@@ -119,16 +132,26 @@ function getNewQuestion(question){
     button.addEventListener('click', selectAnswer)
     choicesEl.appendChild(button)
 
+  availablequestions.splice(questionIndex, 1);
+
   })};
+
+
 
   function selectAnswer (e) {
     var selectedButton = e.target
     var correct = selectedButton.dataset.correct
-    setStatusClass(document.body, correct)
-    Array.from(answerButtonElement.children).forEach(button => {
-      setStatusClass(button, button.dataset.correct)
-    })
-    console.log(correct)
-  }
+    if (correct){
+      score ++
+     } else {
+      secondsLeft--
+    }
+    
+    var totalScore = document.createElement("h3");
+    scoreBoardEl.textContent = "Score";
+    totalScore.textContent = score;
+    body.appendChild(scoreBoardEl);
+    scoreBoardEl.appendChild(totalScore);
+    getNewQuestion()
 
-  function setStatusClass (element)
+  }
