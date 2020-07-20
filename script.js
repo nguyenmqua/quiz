@@ -222,9 +222,10 @@ localStorage.setItem("highScores", JSON.stringify(highScores));
 
 for (var i = 0; i < highScores.length; i++) {
     QuestionEl.textContent = "High Score:"
-    var displayScore = highScores[i];
+    var displayScore = highScores[i].score;
+    var displayName = highScores[i].name;
     var li = document.createElement("li");
-    li.textContent = JSON.stringify(displayScore);
+    li.textContent = "Score: " + displayScore + " Username: " +  displayName;
     hsForm.appendChild(li);
     } 
     username.disabled = true;
