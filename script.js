@@ -78,6 +78,24 @@ var myQuestions = [
         {text: 'Columns Standard Styles', correct: false},
         {text: 'Cascading Style Sheets', correct: true}, 
       ]
+    },
+    {
+      question: 'What is the selector for a class?',
+      answers: [
+        {text: '?', correct: false},
+        {text: '/', correct: false}, 
+        {text: '#', correct: false},
+        {text: '.', correct: true}, 
+      ]
+    },
+    {
+      question: 'What is the selctor for a id?',
+      answers: [
+        {text: '?', correct: false},
+        {text: '/', correct: false}, 
+        {text: '#', correct: true},
+        {text: '.', correct: false}, 
+      ]
     }
    
 ]
@@ -234,4 +252,5 @@ for (var i = 0; i < highScores.length; i++) {
 function Reload(){
   window.location.reload()
 }
+
   
